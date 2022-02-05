@@ -44,13 +44,21 @@ body {
     color: white;
 }
 
+.navbar .nav-item a#a-home:hover {
+    background-color: #555555;
+}
+
 .navbar .nav-item#nav-log {
     margin-left: auto;
 }
 
 .navbar .nav-item a#a-login {
-    background-color: #882e2e;
-    color: #b8b8b8;
+    background-color: #ac3b3b;
+    color: white;
+}
+
+.navbar .nav-item a#a-login:hover {
+    background-color: #d14848;
 }
 
 .nav-item button {
@@ -126,7 +134,7 @@ button:focus {
 }
 
 .div-splash img {
-    width: auto;
+    width: 100%;
     height: auto;
 }
 

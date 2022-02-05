@@ -1,18 +1,18 @@
 <?php
 
+//Thông tin chung
+$_DOMAIN = 'http://localhost/SoundDreamer/';
+$_PATH = substr(__DIR__,0,-4);
+
 //Require các thư viện php
-require_once 'classes/DB.php';
-require_once 'classes/Session.php';
-require_once 'classes/Function.php';
+require_once $_PATH.'classes/DB.php';
+require_once $_PATH.'classes/Session.php';
+require_once $_PATH.'classes/Function.php';
 
 //Kết nối database
 $db = new DB();
 $db->connect();
 $db->set_char('utf8');
-
-//Thông tin chung
-$_DOMAIN = 'http://localhost/SoundDreamer/index.php';
-$_DOMAIN2 = 'http://localhost/SoundDreamer/';
 
 //Khởi tạo session
 $session = new Session();

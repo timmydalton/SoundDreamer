@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sound dreamer</title>
-    <link rel="icon" href="data/img-public/favicon-32x32.png" type="image/png" sizes="32x32">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href=<?php echo $_DOMAIN.'data/img-public/favicon-32x32.png' ?> type="image/png" sizes="32x32">
+    <link rel="stylesheet" href=<?php echo $_DOMAIN.'css/style.css' ?>>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             </a>
         </div>
         <div class="nav-item" id="nav-log">
-            <a href=<?php echo $_DOMAIN.'?t=login' ?> id="a-login">
+            <a href=<?php echo $_DOMAIN.'index.php?t=login' ?> id="a-login">
                 Login
             </a>
             <button class="drop-button" id="drop-button">
@@ -33,7 +33,7 @@
     <div class="dropdown" id="dropdown">
         <div class="dropdown-content">
             <a href=<?php echo $_DOMAIN ?>>Home</a>
-            <a href=<?php echo $_DOMAIN.'?t=login' ?>>Login</a>
+            <a href=<?php echo $_DOMAIN.'index.php?t=login' ?>>Login</a>
         </div>
     </div>
 

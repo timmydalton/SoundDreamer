@@ -1,4 +1,4 @@
-$_DOMAIN2 = 'http://localhost/SoundDreamer/';
+$_DOMAIN = 'http://localhost/SoundDreamer/';
 
 //Chức năng đăng nhập
 $('#formSignin button').on('click', function() {
@@ -21,7 +21,7 @@ $('#formSignin button').on('click', function() {
         $this.html('Đăng nhập');
     } else {
         $.ajax({
-            url: $_DOMAIN2 + 'signin.php',
+            url: $_DOMAIN + 'ajax-php/signin.php',
             type: 'POST',
             data: {
                 user_signin: $user_signin,
@@ -29,34 +29,34 @@ $('#formSignin button').on('click', function() {
             },
             success: function(data) {
                 switch (data) {
-                    case "0":
+                    case '0':
                         {
                             $alert.html('Vui lòng điền đầy đủ thông tin');
                             break;
                         }
-                    case "1":
+                    case '1':
                         {
                             $alert.html('Tên đăng nhập không tồn tại');
                             break;
                         }
-                    case "2":
+                    case '2':
                         {
                             $alert.html('Sai mật khẩu!!!');
                             break;
                         }
-                    case "3":
+                    case '3':
                         {
                             $alert.html('Tài khoản của bạn đã bị khoá.');
                             break;
                         }
-                    case "4":
+                    case '4':
                         {
                             $alert.html('Đăng nhập thành công');
                             break;
                         }
                     default:
                         {
-                            $alert.html("Xảy ra lỗi");
+                            $alert.html("{" + data + "}");
                             break;
                         }
                 }
@@ -68,3 +68,53 @@ $('#formSignin button').on('click', function() {
         })
     }
 })
+
+//Upload ảnh đại diện
+$('#formUpAvt').submit(function(e) {
+    img_avt = $('#img_avt').val();
+    $('#formUpAvt button[type=submit]').html('Loading...');
+
+    if (img_avt) {
+        //Lấy ra file
+        var file_data = $('#img_avt').prop('files')[0];
+        //lấy ra kiểu file
+        var type = file_data.type;
+        //Xét kiểu file được upload
+        var match = ["image/gif", "image/png", "image/jpeg", ];
+        //kiểm tra kiểu file
+        if (type == match[0] || type == match[1] || type == match[2]) {
+            //khởi tạo đối tượng form data
+            var form_data = new FormData();
+            //thêm files vào trong form data
+            form_data.append('image', file_data);
+            $('#formUpAvt #note').html('Sending');
+            //sử dụng ajax post
+            $.ajax({
+                url: $_DOMAIN + 'ajax-php/profile-avt.php', // gửi đến file upload 
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function(res) {
+                    $('#formUpAvt button[type=submit]').html('Upload');
+                    $('#formUpAvt #note').html(res);
+                }
+            });
+        }
+    } else {
+        $('#formUpAvt button[type=submit]').html('Upload');
+        $('#formUpAvt #note').html('Vui lòng chọn tệp');
+    }
+});
+
+//Xoá ảnh đại diện
+$('#del_avt').on('click', function() {
+    $confirm = confirm('Bạn có chắc chắn muốn xoá ảnh đại diện của mình không?');
+    if ($confirm == true) {
+        window.location.replace($_DOMAIN + 'ajax-php/profile-avt-del.php');
+    } else {
+        return false;
+    }
+});

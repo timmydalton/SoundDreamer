@@ -22,7 +22,21 @@ switch ($tab)
         }
     case 'login':
         {
-            require_once 'templates/login.php';
+            //Nếu user đã đăng nhập rồi thì redirect lại domain
+            if ($user != '')
+            {
+                new Redirect($_DOMAIN);
+                break;
+            }
+            else
+            {
+                require_once 'templates/login.php';
+                break;
+            }
+        }
+    case 'prof':
+        {
+            require_once 'templates/profile.php';
             break;
         }
 }
