@@ -1,6 +1,6 @@
 <footer class="footer">
         <div class="footer__addr">
-            <h1 class="footer__logo">ZingMP3</h1>
+            <h1 class="footer__logo">Sound Dreamer</h1>
 
             <h2>Contact</h2>
 
@@ -88,9 +88,9 @@
         </div>
     </footer>
 
-    <script src="jscript/jquery-3.6.0.min.js"></script>
-    <script src="jscript/head-foot.js"></script>
-    <script src="jscript/form.js"></script>
+    <script src="<?php echo($_DOMAIN.'jscript/jquery-3.6.0.min.js'); ?>"></script>
+    <script src="<?php echo($_DOMAIN.'jscript/head-foot.js'); ?>"></script>
+    <script src="<?php echo($_DOMAIN.'jscript/form.js'); ?>"></script>
 </body>
 
 </html>

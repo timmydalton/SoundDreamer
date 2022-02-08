@@ -22,7 +22,7 @@ switch ($tab)
         }
     case 'login':
         {
-            //Nếu user đã đăng nhập rồi thì redirect lại domain
+            //Nếu user đã đăng nhập rồi mà vẫn cố truy cập thì redirect lại domain
             if ($user != '')
             {
                 new Redirect($_DOMAIN);
@@ -37,6 +37,11 @@ switch ($tab)
     case 'prof':
         {
             require_once 'templates/profile.php';
+            break;
+        }
+    case 'up-au':
+        {
+            require_once 'templates/upload-audio.php';
             break;
         }
 }

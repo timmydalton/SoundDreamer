@@ -50,19 +50,27 @@
                 Home
             </a>
         </div>
+        <div class="nav-item" id="nav-rou">
+            <a href=<?php echo $_DOMAIN . 'index.php?t=prof' ?> id="a-prof">
+                Profile
+            </a>
+        </div>
+        <div class="nav-item" id="nav-rou">
+            <a href=<?php echo $_DOMAIN . 'index.php?t=up-au' ?> id="a-up-au">
+                Upload
+            </a>
+        </div>
         <div class="nav-item" id="nav-user">
             <div class="uname" id="user-name">
-                <p><?php echo $data_user['display_name'];?></p>
+                <p><?php echo $data_user['display_name']; ?></p>
             </div>
             <img src="data/img-avatar/<?php
-            if ($data_user['url_avatar'] == '')
-            {
-                echo 'default.png';
-            } 
-            else {
-                echo $data_user['url_avatar'];
-            }
-            ?>" alt="">
+                                        if ($data_user['url_avatar'] == '') {
+                                            echo 'default.png';
+                                        } else {
+                                            echo $data_user['url_avatar'];
+                                        }
+                                        ?>" alt="">
         </div>
         <div class="nav-item" id="nav-log">
             <a href=<?php echo $_DOMAIN . 'ajax-php/signout.php' ?> id="a-login">
@@ -77,6 +85,8 @@
     <div class="dropdown" id="dropdown">
         <div class="dropdown-content">
             <a href=<?php echo $_DOMAIN ?>>Home</a>
+            <a href=<?php echo $_DOMAIN . 'index.php?t=prof' ?>>Profile</a>
+            <a href=<?php echo $_DOMAIN . 'index.php?t=up-au' ?>>Upload</a>
             <a href=<?php echo $_DOMAIN . 'ajax-php/signout.php' ?>>Đăng xuất</a>
         </div>
     </div>

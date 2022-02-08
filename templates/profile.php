@@ -3,8 +3,11 @@
 if ($user) {
 ?>
     <style>
+        a#a-prof {
+            color: #8adcde !important;
+        }
+
         .content {
-            margin: 30px 0px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -16,11 +19,14 @@ if ($user) {
         }
 
         .profile {
-            width: 600px;
+            margin: 30px 0px;
+            width: 580px;
             text-align: center;
+            background-color: #e5e5e5;
         }
 
         .profile .profile-box {
+            background-color: white;
             border: 1px solid #e5e5e5;
             border-radius: 8px;
             width: 540px;
@@ -90,6 +96,36 @@ if ($user) {
             font-family: 'Time new Roman';
             font-size: 15px;
         }
+
+        .form {
+            margin-bottom: 30px;
+        }
+
+        #des {
+            font-family: 'Arial';
+            border-color: #e5e5e5;
+            border-radius: 6px;
+        }
+
+        #info {
+            margin-left: 0px;
+        }
+
+        #change-pass {
+            margin-left: 0px;
+        }
+
+        #alertInfo {
+            color: red;
+        }
+
+        #alertPass {
+            color: red;
+        }
+
+        .form-group .form-pass {
+            margin: 5px 0px;
+        }
     </style>
 
     <div class="content">
@@ -98,7 +134,7 @@ if ($user) {
 
             <!--Tạo form ảnh-->
             <div class="profile-box" id="upimg">
-                <h4>Upload ảnh đại diện</h4>
+                <h4>Ảnh đại diện</h4>
                 <div class="form">
                     <form action="" method="POST" onsubmit="return false;" id="formUpAvt" enctype="multipart/form-data">
                         <img src="data/img-avatar/<?php
@@ -107,7 +143,7 @@ if ($user) {
                                                     } else {
                                                         echo $data_user['url_avatar'];
                                                     }
-                                                    ?> ?>" alt="">
+                                                    ?>" alt="">
                         <h5>Ảnh hiện tại</h5>
                         <div class="note" id="note">
                             Vui lòng chọn ảnh định dạng .jpg, .png, v.v có dung lượng dưới 5mb
@@ -125,7 +161,55 @@ if ($user) {
             </div>
             <!--Tạo form thông tin khác-->
             <div class="profile-box">
-
+                <h4>Thông tin cá nhân</h4>
+                <div class="form" id="form-avt">
+                    <form action="" method="POST" onsubmit="return false;" id="formInfo">
+                        <div class="form-group">
+                            <h5>Tên hiển thị</h5>
+                            <input type="text" class="form-control" id="display_name" value="<?php echo '' . $data_user['display_name'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <h5>Email</h5>
+                            <input type="text" class="form-control" id="email" value="<?php echo '' . $data_user['email'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <h5>Số điện thoại</h5>
+                            <input type="text" class="form-control" id="phone" value="<?php echo '' . $data_user['phone'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <h5>Mô tả</h5>
+                            <textarea class="des" id="des" cols="31" rows="10"><?php echo '' . $data_user['description'] ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="submit" type="submit" id="info">Confirm</button>
+                        </div>
+                        <div id="alertInfo"></div>
+                    </form>
+                </div>
+            </div>
+            <!--Tạo form mật khẩu-->
+            <div class="profile-box">
+                <h4>Thay đổi mật khẩu</h4>
+                <div class="form" id="form-pass">
+                    <form action="" method="POST" onsubmit="return false;" id="formPass">
+                        <div class="form-group">
+                            <input type="text" class="form-pass" id="pro-user" placeholder="Nhập tên tài khoản">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-pass" id="pro-pass" placeholder="Nhập mật khẩu hiện tại...">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-pass" id="pro-repass" placeholder="Nhập mật khẩu mới...">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-pass" id="pro-repass2" placeholder="Nhập lại mật khẩu mới...">
+                        </div>
+                        <div class="form-group">
+                            <button class="submit" type="submit" id="change-pass">Confirm</button>
+                        </div>
+                        <div id="alertPass"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -35,7 +35,7 @@ if (isset($_POST['user_signin']) && isset($_POST['pass_signin']))
                     $session->send($user_signin);
                     $db->close();
 
-                    echo 4;
+                    echo 'Đăng nhập thành công';
                     new Redirect($_DOMAIN);
                 }
                 else echo 3;

@@ -9,7 +9,7 @@ body {
     height: 50px;
     top: 0px;
     left: 0px;
-    background-color: #000000;
+    background-color: #121212;
     display: flex;
     box-shadow: 0px 3px 10px #6e6e6e;
 }
@@ -22,7 +22,7 @@ body {
 }
 
 .navbar .nav-item#nav-logo {
-    width: 150px;
+    width: 200px;
 }
 
 .navbar .nav-item#nav-logo img {
@@ -39,12 +39,12 @@ body {
     border-radius: 8px;
 }
 
-.navbar .nav-item a#a-home {
+.navbar .nav-item#nav-rou a {
     background-color: #424242;
     color: white;
 }
 
-.navbar .nav-item a#a-home:hover {
+.navbar .nav-item#nav-rou a:hover {
     background-color: #555555;
 }
 
@@ -186,11 +186,12 @@ button:focus {
     flex-flow: row wrap;
     padding: 30px 30px 20px 30px;
     color: #2f2f2f;
-    background-color: #fff;
+    background-color: #1F1B24;
     border-top: 1px solid #e5e5e5;
 }
 
 .footer>* {
+    color: #e5e5e5;
     flex: 1 100%;
 }
 
