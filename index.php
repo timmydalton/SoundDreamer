@@ -44,6 +44,11 @@ switch ($tab)
             require_once 'templates/upload-audio.php';
             break;
         }
+    case 'signup':
+        {
+            require_once 'templates/signup.php';
+            break;
+        }
 }
 
 // Require footer

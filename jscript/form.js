@@ -233,3 +233,66 @@ $('#formUpAudio').submit(function(e) {
         $alert.html('Bạn chưa chọn file nhạc!');
     }
 });
+
+//Chức năng đăng ký
+$('#formSignup button').on('click', function() {
+    $this = $('formSignup button');
+    $this.html('Đang tải ...');
+
+    //Gán giá trị biến
+    $user_signup = $('#formSignup #user-signup').val();
+    $pass_signup = $('#formSignup #pass-signup').val();
+    $pass_signup2 = $('#formSignup #pass-signup2').val();
+    $alert = $('#formSignup #alert2');
+
+    //Làm mới thông báo mỗi khi click nút đăng nhập
+    $alert.css("display", "block");
+    $alert.html('');
+
+    //Nếu giá trị rỗng
+    if ($user_signup == '' || $pass_signup == '' || $pass_signup2 == '') {
+        $alert.css("display", "block");
+        $alert.html('Vui lòng điền đủ thông tin');
+        $this.html('Đăng nhập');
+    } else if ($pass_signup != $pass_signup2) {
+        $alert.html('Mật khẩu không trùng khớp...');
+    } else {
+        $.ajax({
+            url: $_DOMAIN + 'ajax-php/signup.php',
+            type: 'POST',
+            data: {
+                user_signup: $user_signup,
+                pass_signup: $pass_signup,
+                pass_signup2: $pass_signup2,
+            },
+            success: function(data) {
+                switch (data) {
+                    case '0':
+                        {
+                            $alert.html('Vui lòng điền đầy đủ thông tin');
+                            break;
+                        }
+                    case '1':
+                        {
+                            $alert.html('Tên đăng nhập đã tồn tại');
+                            break;
+                        }
+                    case '2':
+                        {
+                            $alert.html('Mật khẩu nhập không khớp nhau');
+                            break;
+                        }
+                    default:
+                        {
+                            $alert.html(data);
+                            break;
+                        }
+                }
+            },
+            error: function() {
+                $alert.html('Không thể đăng ký vào lúc này, hãy thử lại sau.');
+                $this.html('Đăng nhập');
+            }
+        })
+    }
+});
