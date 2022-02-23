@@ -97,6 +97,9 @@ $('#formUpAvt').submit(function(e) {
                     $('#formUpAvt #note').html(res);
                 }
             });
+        } else {
+            $('#formUpAvt #note').html('Bạn chỉ được chọn file ảnh');
+            $('#formUpAvt button[type=submit]').html('Upload');
         }
     } else {
         $('#formUpAvt button[type=submit]').html('Upload');

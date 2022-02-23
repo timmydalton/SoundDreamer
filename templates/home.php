@@ -36,7 +36,7 @@
 
     .left_1 img {
         width: 120px;
-        height: auto;
+        height: 120px;
         margin: 30px 15px 5px 15px;
         border-radius: 10%;
     }

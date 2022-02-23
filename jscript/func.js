@@ -38,13 +38,13 @@ function delSong() {
     $confirm = confirm("Bạn có chắc muốn xoá bài hát này không?");
     if ($confirm == true) {
         $.ajax({
-            url: $_DOMAIN + 'ajax-php/delcmt.php',
+            url: $_DOMAIN + 'ajax-php/delsong.php',
             type: 'POST',
             data: {
                 IDSong: $IDSong
             },
             success: function(data) {
-                alert(data);
+                $('#IDSong').html(data);
             }
         });
 

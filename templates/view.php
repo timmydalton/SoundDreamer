@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
         .music-player .top .song_cover {
             margin-left: 80px;
             height: 175px;
-            width: auto;
+            width: 175px;
             border-radius: 50%;
             animation: rotation 60s infinite linear;
         }
@@ -281,17 +281,18 @@ if (isset($_GET['id'])) {
         $data_songs = $db->fetch_assoc($sql_get_song, 1);
     ?>
         <div class="content">
-            <?php
-            if ($user) {
-            ?>
-                <div id="data">
-                    <p id="IDSong"><?php echo $id ?></p>
+            <div id="data">
+                <p id="IDSong"><?php echo $id ?></p>
+                <?php
+                if ($user) {
+                ?>
+
                     <p id="IDacc"><?php echo $data_user['IDacc'] ?></p>
-                    <p id="date"><?php echo $date_curr ?></p>
-                </div>
-            <?php
-            }
-            ?>
+                <?php
+                }
+                ?>
+                <p id="date"><?php echo $date_curr ?></p>
+            </div>
             <div class="music-player">
                 <div class="top">
                     <div class="img">
@@ -311,12 +312,14 @@ if (isset($_GET['id'])) {
             </div>
 
             <?php
-            if ($data_user['role'] == 0) {
+            if ($user) {
+                if ($data_user['role'] == 0) {
             ?>
-                <div class="remove">
-                    <button id="remove" onclick="delSong()"><span>Xoá bài hát</span></button>
-                </div>
+                    <div class="remove">
+                        <button id="remove" onclick="delSong()"><span>Xoá bài hát</span></button>
+                    </div>
             <?php
+                }
             }
             ?>
 
@@ -326,8 +329,8 @@ if (isset($_GET['id'])) {
 
                 <p>Lời bài hát:</p>
                 <?php
-                $first_lyrics = substr($data_songs['songlyrics'], 0, 100);
-                $second_lyrics = substr($data_songs['songlyrics'], 100);
+                $first_lyrics = substr($data_songs['songlyrics'], 0, 0);
+                $second_lyrics = substr($data_songs['songlyrics'], 0);
                 ?>
                 <p>
                     <?php
