@@ -49,4 +49,11 @@ if ($user)
     }
 }
 
+//Lấy ngày tháng hiện tại
+$date_curr = '';
+$date_curr = date("Y-m-d H:i:s a");
+$day_curr = substr($date_curr, 8, 2);
+$month_curr = substr($date_curr, 5, 2);
+$year_curr = substr($date_curr, 0, 4);
+
 ?>

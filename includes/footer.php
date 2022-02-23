@@ -90,6 +90,7 @@
 
     <script src="<?php echo($_DOMAIN.'jscript/jquery-3.6.0.min.js'); ?>"></script>
     <script src="<?php echo($_DOMAIN.'jscript/head-foot.js'); ?>"></script>
+    <script src="<?php echo($_DOMAIN.'jscript/func.js'); ?>"></script>
     <script src="<?php echo($_DOMAIN.'jscript/form.js'); ?>"></script>
 </body>
 

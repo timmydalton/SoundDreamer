@@ -18,6 +18,7 @@ switch ($tab)
 {
     case 'home':
         {
+            require_once 'templates/home.php';
             break;
         }
     case 'login':
@@ -47,6 +48,16 @@ switch ($tab)
     case 'signup':
         {
             require_once 'templates/signup.php';
+            break;
+        }
+    case 'search':
+        {
+            require_once 'templates/search.php';
+            break;
+        }
+    case 'view':
+        {
+            require_once 'templates/view.php';
             break;
         }
 }

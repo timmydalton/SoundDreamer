@@ -16,7 +16,7 @@
             <img src="data/img-public/nav-logo.png" alt="">
         </div>
         <div class="nav-item" id="nav-rou">
-            <a href=<?php echo $_DOMAIN ?> id="a-home">
+            <a href=<?php echo $_DOMAIN . 'index.php' ?> id="a-home">
                 Home
             </a>
         </div>
@@ -32,7 +32,7 @@
 
     <div class="dropdown" id="dropdown">
         <div class="dropdown-content">
-            <a href=<?php echo $_DOMAIN ?>>Home</a>
+            <a href=<?php echo $_DOMAIN . 'index.php' ?>>Home</a>
             <a href=<?php echo $_DOMAIN.'index.php?t=login' ?>>Login</a>
         </div>
     </div>

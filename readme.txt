@@ -1,5 +1,4 @@
-Server nên được host ở cổng 80
-
-Hãy chỉnh sửa đường dẫn thư mục tại thì hãy chỉnh lại biến $_DOMAIN ở
+Tuỳ chỉnh biến $_DOMAIN theo host tại các file sau:
     1. core/init.php
     2. jscript/form.js
+    3. jscript/func.js

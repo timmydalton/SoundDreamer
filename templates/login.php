@@ -6,7 +6,8 @@
     }
 
     .login-form {
-        border: 1px solid #e5e5e5;
+        border: 2px solid #e5e5e5;
+        border-radius: 8px;
         width: 500px;
         display: flex;
         justify-content: center;
@@ -73,6 +74,11 @@
         display: none;
         color: red;
     }
+
+    .login-group p{
+        all: unset;
+        margin-right: 5px;
+    }
 </style>
 
 <div class="content">
@@ -87,6 +93,10 @@
             </div>
             <div class="login-group">
                 <input type="password" class="form-control" placeholder="Mật khẩu..." id="pass-signin">
+            </div>
+            <div class="login-group">
+                <p>Bạn chưa có tài khoản?</p>
+                <a href="<?php echo $_DOMAIN.'index.php?t=signup' ?>">Đăng ký</a>
             </div>
             <div class="login-group">
                 <button type="submit">Xác nhận</button>

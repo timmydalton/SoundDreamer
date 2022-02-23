@@ -28,7 +28,7 @@ if (isset($_POST['user_signup']) && isset($_POST['pass_signup']) && isset($_POST
                 //Băm mật khẩu
                 $pass_signup = md5($pass_signup);
                 //Đăng ký tài khoản vào db
-                $sql_create_account = "INSERT INTO `accounts` (`IDacc`, `username`, `password`, `display_name`, `email`, `status`, `phone`, `description`, `url_avatar`) VALUES (NULL, \"". $user_signup ."\", \"". $pass_signup ."\", \"". $user_signup ."\", '', '', '', '', 'default.png')";
+                $sql_create_account = "INSERT INTO `accounts` (`IDacc`, `username`, `password`, `display_name`, `email`, `status`, `phone`, `description`, `url_avatar`, `role`) VALUES (NULL, \"". $user_signup ."\", \"". $pass_signup ."\", \"". $user_signup ."\", '', '1', '', '', 'default.png', '1')";
                 $db->query($sql_create_account);
                 $session->send($user_signup);
                 $db->close();

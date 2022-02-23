@@ -46,7 +46,7 @@
             <img src="data/img-public/nav-logo.png" alt="">
         </div>
         <div class="nav-item" id="nav-rou">
-            <a href=<?php echo $_DOMAIN ?> id="a-home">
+            <a href=<?php echo $_DOMAIN . 'index.php' ?> id="a-home">
                 Home
             </a>
         </div>
@@ -55,11 +55,17 @@
                 Profile
             </a>
         </div>
-        <div class="nav-item" id="nav-rou">
-            <a href=<?php echo $_DOMAIN . 'index.php?t=up-au' ?> id="a-up-au">
-                Upload
-            </a>
-        </div>
+        <?php
+        if ($data_user['role'] == 0) {
+        ?>
+            <div class="nav-item" id="nav-rou">
+                <a href=<?php echo $_DOMAIN . 'index.php?t=up-au' ?> id="a-up-au">
+                    Upload
+                </a>
+            </div>
+        <?php
+        }
+        ?>
         <div class="nav-item" id="nav-user">
             <div class="uname" id="user-name">
                 <p><?php echo $data_user['display_name']; ?></p>
@@ -84,9 +90,15 @@
 
     <div class="dropdown" id="dropdown">
         <div class="dropdown-content">
-            <a href=<?php echo $_DOMAIN ?>>Home</a>
+            <a href=<?php echo $_DOMAIN . 'index.php' ?>>Home</a>
             <a href=<?php echo $_DOMAIN . 'index.php?t=prof' ?>>Profile</a>
-            <a href=<?php echo $_DOMAIN . 'index.php?t=up-au' ?>>Upload</a>
+            <?php
+            if ($data_user['role'] == 0) {
+            ?>
+                <a href=<?php echo $_DOMAIN . 'index.php?t=up-au' ?>>Upload</a>
+            <?php
+            }
+            ?>
             <a href=<?php echo $_DOMAIN . 'ajax-php/signout.php' ?>>Đăng xuất</a>
         </div>
     </div>

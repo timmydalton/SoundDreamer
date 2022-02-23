@@ -296,3 +296,32 @@ $('#formSignup button').on('click', function() {
         })
     }
 });
+
+//Chức năng bình luận
+$('button#submit').on('click', function() {
+    $IDSong = $('#IDSong').text();
+    $IDacc = $('#IDacc').text();
+    $data = $('#cmt-data').val();
+    $date = $('#date').text();
+    if (!$data) {
+        alert("Bạn chưa nhập comments");
+    } else {
+        $.ajax({
+            url: $_DOMAIN + 'ajax-php/upcmt.php',
+            type: 'POST',
+            data: {
+                IDSong: $IDSong,
+                IDacc: $IDacc,
+                data: $data,
+                date: $date
+            },
+            success: function(data) {
+                alert(data);
+                getCmtData();
+            }
+        });
+    }
+});
+
+//Lấy show cmt bằng ajax
+$('button#show-comments').on('click', getCmtData());

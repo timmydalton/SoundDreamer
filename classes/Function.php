@@ -12,4 +12,13 @@ class Redirect
     }
 }
 
+//Show comment theo id bài hát
+class ShowComment
+{
+    public function __construct($id)
+    {
+        
+    }
+}
+
 ?>

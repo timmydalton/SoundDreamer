@@ -11,7 +11,8 @@ if ($user) {
         }
 
         .signup-form {
-            border: 1px solid #e5e5e5;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
             width: 500px;
             display: flex;
             justify-content: center;
@@ -82,7 +83,7 @@ if ($user) {
     <div class="content">
         <div class="signup-form">
             <div class="signup-group" id="1">
-                <img src="data/img-public/login.png" alt="">
+                <img src="data/img-public/signup.png" alt="">
                 <p>Đăng ký</p>
             </div>
             <form method="POST" id="formSignup" onsubmit="return false;">
