@@ -96,7 +96,7 @@
     }
 
     .right .vote-count {
-        padding: 0px 10px 0px 0px;
+        padding: 15px 10px 0px 0px;
         color: #999;
     }
 
@@ -134,10 +134,10 @@
             <div id="left_title">Dành riêng cho bạn</div>
             <div class="left_1">
                 <?php
-                foreach ($db->fetch_assoc('SELECT * FROM songs ORDER BY RAND() LIMIT 4', 0) as $data_newest) {
+                foreach ($db->fetch_assoc("SELECT * FROM songs WHERE status = '1' ORDER BY RAND() LIMIT 4", 0) as $data_newest) {
                 ?>
                     <div class="box-container">
-                        <a href="<?php echo $_DOMAIN.'index.php?t=view&id='.$data_newest['IDSong'] ?>">
+                        <a href="<?php echo $_DOMAIN . 'index.php?t=view&id=' . $data_newest['IDSong'] ?>">
                             <img src="data\img-song\<?php echo $data_newest['url_cover'] ?>" alt="">
                         </a>
                         <div class="song_name">
@@ -153,10 +153,10 @@
             <div id="left_title">Nhạc mới</div>
             <div class="left_1">
                 <?php
-                foreach ($db->fetch_assoc('SELECT * FROM songs ORDER BY IDSong DESC LIMIT 4', 0) as $data_newest) {
+                foreach ($db->fetch_assoc("SELECT * FROM songs WHERE status = '1' ORDER BY IDSong DESC LIMIT 4", 0) as $data_newest) {
                 ?>
                     <div class="box-container">
-                        <a href="<?php echo $_DOMAIN.'index.php?t=view&id='.$data_newest['IDSong'] ?>">
+                        <a href="<?php echo $_DOMAIN . 'index.php?t=view&id=' . $data_newest['IDSong'] ?>">
                             <img src="data\img-song\<?php echo $data_newest['url_cover'] ?>" alt="">
                         </a>
                         <div class="song_name">
@@ -174,46 +174,23 @@
     </div>
     <div class="right">
         <div class="right-title">Bảng xếp hạng</div>
-        <div class="right-container">
-            <div class="number">01</div>
-            <div class="song-info">
-                <div class="song-title">Xuân thì</div>
-                <div class="singer">Hà anh tuấn</div>
+        <?php
+        $a = 1;
+        foreach ($db->fetch_assoc('SELECT IDSong, COUNT(*) as count FROM comments WHERE status = 1 GROUP BY IDSong ORDER BY count DESC LIMIT 5', 0) as $data_chart) {
+            $id = $data_chart['IDSong'];
+            $song = $db->fetch_assoc("SELECT * FROM songs WHERE IDSong ='$id'", 1);
+        ?>
+            <div class="right-container">
+                <div class="number"><?php echo $a ?></div>
+                <div class="song-info">
+                    <div class="song-title"><?php echo $song['songtitle'] ?></div>
+                    <div class="singer"><?php echo $song['songsinger'] ?></div>
+                </div>
+                <div class="vote-count"><?php echo $data_chart['count'] ?></div>
             </div>
-            <div class="vote-count">1096</div>
-        </div>
-        <div class="right-container">
-            <div class="number">02</div>
-            <div class="song-info">
-                <div class="song-title">Film</div>
-                <div class="singer">Hoàng thống</div>
-            </div>
-            <div class="vote-count">1030</div>
-        </div>
-        <div class="right-container">
-            <div class="number">03</div>
-            <div class="song-info">
-                <div class="song-title">Gieo quẻ</div>
-                <div class="singer">Hoàng thuỳ linh</div>
-            </div>
-            <div class="vote-count">948</div>
-        </div>
-        <div class="right-container">
-            <div class="number">04</div>
-            <div class="song-info">
-                <div class="song-title">Mang tiền về cho mẹ</div>
-                <div class="singer">Đen vâu</div>
-            </div>
-            <div class="vote-count">630</div>
-        </div>
-        <div class="right-container">
-            <div class="number">05</div>
-            <div class="song-info">
-                <div class="song-title">Baby shark</div>
-                <div class="singer">N/a</div>
-            </div>
-            <div class="vote-count">239</div>
-        </div>
-
+        <?php
+        $a++;
+        }
+        ?>
     </div>
 </div>

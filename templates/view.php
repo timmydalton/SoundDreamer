@@ -127,6 +127,7 @@ if (isset($_GET['id'])) {
             border-radius: 8px;
             margin-right: 20px;
             margin-left: 20px;
+            margin-top: 10px;
         }
 
         .cmt-box h4 {
@@ -174,11 +175,101 @@ if (isset($_GET['id'])) {
         }
 
         .cmt-box button:hover {
+            background-color: #ac3b3b;
             cursor: pointer;
         }
 
         #data {
             display: none;
+        }
+
+        #cmt-section {
+            align-items: stretch;
+        }
+
+        button#remove {
+            margin-bottom: 20px;
+            border: none;
+            font-family: cursive;
+            color: white;
+            background-color: #d14848;
+            padding: 10px 10px;
+            border-radius: 8px;
+            transition: all 0.5s;
+            cursor: pointer;
+            width: 120px;
+        }
+
+        button#remove span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        button#remove span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        button#remove:hover span {
+            padding-right: 25px;
+        }
+
+        button#remove:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        button#remove:active {
+            background-color: #ac3b3b;
+        }
+
+        button#show-comments {
+            margin-bottom: 20px;
+            border: none;
+            font-family: cursive;
+            color: white;
+            background-color: #d14848;
+            padding: 10px 10px;
+            border-radius: 8px;
+            transition: all 0.5s;
+            cursor: pointer;
+            width: 200px;
+            margin-left: 225px;
+        }
+
+        button#show-comments:active {
+            background-color: #ac3b3b;
+        }
+
+        button#show-comments span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        button#show-comments span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        button#show-comments:hover span {
+            padding-right: 25px;
+        }
+
+        button#show-comments:hover span:after {
+            opacity: 1;
+            right: 0;
         }
     </style>
 
@@ -219,9 +310,20 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
 
+            <?php
+            if ($data_user['role'] == 0) {
+            ?>
+                <div class="remove">
+                    <button id="remove" onclick="delSong()"><span>Xoá bài hát</span></button>
+                </div>
+            <?php
+            }
+            ?>
+
             <div class="description">
                 <h3><?php echo $data_songs['songtitle'] ?> - <?php echo $data_songs['songsinger'] ?></h3>
-                <p>Đăng bởi <?php echo $data_songs['username'] ?></p>
+                <p>Đăng bởi <?php echo $db->fetch_assoc("SELECT * FROM accounts WHERE username = '" . $data_songs['username'] . "'", 1)['display_name']; ?></p>
+
                 <p>Lời bài hát:</p>
                 <?php
                 $first_lyrics = substr($data_songs['songlyrics'], 0, 100);
@@ -258,7 +360,7 @@ if (isset($_GET['id'])) {
                 }
                 ?>
                 <div class="cmt-content">
-                    <button id="show-comments">Hiển thị bình luận</button>
+                    <button id="show-comments" onclick="getCmtData()"><span>Hiển thị bình luận</span></button>
                 </div>
             </div>
         </div>

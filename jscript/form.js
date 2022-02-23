@@ -316,12 +316,15 @@ $('button#submit').on('click', function() {
                 date: $date
             },
             success: function(data) {
-                alert(data);
+                if (data != '1') {
+                    alert(data);
+                };
                 getCmtData();
+                $('cmt-data').text(' ');
             }
         });
     }
 });
 
 //Lấy show cmt bằng ajax
-$('button#show-comments').on('click', getCmtData());
+$('button#show-comments').on('click', getCmtData);

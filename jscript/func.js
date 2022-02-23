@@ -17,7 +17,7 @@ function seeMore() {
         $('#more').css("display", "none");
         $('#a-see').html("...See more");
     }
-}
+};
 
 function getCmtData() {
     $IDSong = $('#IDSong').text();
@@ -31,4 +31,22 @@ function getCmtData() {
             $('.cmt-content').html(data);
         }
     });
-}
+};
+
+function delSong() {
+    $IDSong = $('#IDSong').text();
+    $confirm = confirm("Bạn có chắc muốn xoá bài hát này không?");
+    if ($confirm == true) {
+        $.ajax({
+            url: $_DOMAIN + 'ajax-php/delcmt.php',
+            type: 'POST',
+            data: {
+                IDSong: $IDSong
+            },
+            success: function(data) {
+                alert(data);
+            }
+        });
+
+    }
+};

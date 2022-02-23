@@ -25,7 +25,7 @@ if (isset($_POST)) {
                     </span></h4>
                     <p class="p-1"> <?php echo $data_cmt['date'] ?> </p>
                 </div>
-                <p><?php echo $data_cmt['data'] ?></p>
+                <p><?php echo nl2br($data_cmt['data']) ?></p>
             </div>
         </div>
 <?php

@@ -28,6 +28,6 @@ if (isset($_POST['data'])){
         $sql_up_cmt = "INSERT INTO `comments` (`IDCmt`, `IDSong`, `IDacc`, `date`, `data`, `status`) VALUES (NULL, '$IDSong', '$IDacc', '$date', '$data', '1')";
         $db->query($sql_up_cmt);
         $db->close();
-        echo "Gửi bình luận thành công!";
+        echo '1';
     }
 }
